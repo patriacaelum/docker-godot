@@ -30,6 +30,7 @@ RUN pacman -Syu --noconfirm \
 	&& curl ${GODOT_URL_EXPORT_TEMPLATES} --output ${GODOT_EXPORT_TEMPLATES_ZIP} \
 	&& 7z x ${GODOT_ZIP} \
 	&& 7z x ${GODOT_EXPORT_TEMPLATES_ZIP} \
+	&& mv ${GODOT} ~/ \
 	&& mkdir -p ${DIR_GODOT_EXPORT_TEMPLATES} \
 	&& cp templates/* ${DIR_GODOT_EXPORT_TEMPLATES} \
 	&& rm -f ${GODOT_ZIP} \
