@@ -9,9 +9,6 @@ ENV GODOT_RELEASE=stable
 ENV GODOT_VERSION=4.1
 ENV TERM=xterm-256color
 
-# Directories
-ENV DIR_GODOT_EXPORT_TEMPLATES=~/.local/share/godot/export_templates/${GODOT_VERSION}.${GODOT_RELEASE}
-
 # Local Godot files
 ENV GODOT_ROOT=Godot_v${GODOT_VERSION}-${GODOT_RELEASE}
 ENV GODOT=${GODOT_ROOT}_linux.x86_64
@@ -31,9 +28,7 @@ RUN pacman -Syu --noconfirm \
 	&& 7z x ${GODOT_ZIP} \
 	&& 7z x ${GODOT_EXPORT_TEMPLATES_ZIP} \
 	&& mv ${GODOT} ~/ \
-	&& mkdir -p ${DIR_GODOT_EXPORT_TEMPLATES} \
-	&& cp templates/* ${DIR_GODOT_EXPORT_TEMPLATES} \
+	&& mv templates/ ~/ \
 	&& rm -f ${GODOT_ZIP} \
 	&& rm -f ${GODOT_EXPORT_TEMPLATES_ZIP} \
-	&& rm -rf templates/ \
 
